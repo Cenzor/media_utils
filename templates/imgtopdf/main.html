@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Img to PDF converter{% endblock %}
+{% block content %}
+    {% if sent %}
+        <p>File is uploaded and converted. 
+        <a href="{% url "app_imgtopdf:download_file" file_name_pdf %}" id="download_redirect">Download </a>
+        {{ file_name_pdf }}</p>
+    {% else %}
+        <h1>Upload file:</h1>
+        <form action="." enctype="multipart/form-data" method="post">
+            {{ upload_form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Upload">
+        </form>
+    {% endif %}
+    <script type="text/javascript">
+        document.getElementById('download_redirect').addEventListener('click', function() {
+            setTimeout(function() {
+                document.location.href='{% url "app_imgtopdf:imgtopdf" %}';
+            }, 1000);
+        }, false);
+    </script>
+{% endblock %}

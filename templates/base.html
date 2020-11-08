@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Media Utils{% endblock %}</title>
+        <link href="{% static "css/base.css" %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <span class="logo"><a href="{% url "main_index" %}">Media Utils</a></span>
+                <ul class="menu">
+                    <li {% if section == 'imgtopdf' %} class='selected' {% endif %}>
+                        <a href="{% url "app_imgtopdf:imgtopdf" %}">Image to PDF converter</a>
+                    </li>
+                    <li {% if section == 'ytdl' %} class='selected' {% endif %}>
+                        <a href="{% url "app_ytdl:ytdl" %}">YouTube-dl</a>
+                    </li>
+                </ul>
+        </div>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
