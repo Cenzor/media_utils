@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}YouTube-dl{% endblock %}
+{% block content %}
+    <h1>YouTube-dl service</h1>
+    "{{ title_video }}"
+    <p><img src="{{ thumbnail_url }}"></p>
+    Выберите формат и введите адрес э/почты для отправки ссылки на скачивание видео
+    <form action="{% url 'app_ytdl:download_order' video_url %}" enctype="multipart/form-data" method="post">
+        {{ format_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Далее">
+    </form>
+{% endblock %}

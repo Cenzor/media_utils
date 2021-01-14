@@ -2,4 +2,10 @@
 {% block title %}YouTube-dl{% endblock %}
 {% block content %}
     <h1>YouTube-dl service</h1>
+    <p>Вставьте ссылку на видео:</p>
+    <form action="." enctype="multipart/form-data" method="post">
+            {{ youtube_form }}
+            {% csrf_token %}
+            <input type="submit" value="Далее">
+    </form>
 {% endblock %}

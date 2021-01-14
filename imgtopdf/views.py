@@ -1,6 +1,5 @@
 from django.conf import settings
-from django.http.response import FileResponse, HttpResponse, Http404, HttpResponseRedirect
-from django.http import FileResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import UploadImageForm
 import os
@@ -44,7 +43,8 @@ def download_file(request, filename):
         with open(file_path, 'rb') as fh:
             mime_type, _ = mimetypes.guess_type(file_path)
             response = HttpResponse(fh.read(), content_type=mime_type)
-            response['Content-Disposition'] = 'filename=' + os.path.basename(file_path)
+            response['Content-Disposition'] = 'filename=' + \
+                os.path.basename(file_path)
             os.remove(file_path)
             return response
     else:

@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+url = 'https://www.youtube.com/watch?v=_bTf3WJo-2Q'
+
+
+class YouTubeDL(models.Model):
+
+    url = models.URLField('URL', default=url)
