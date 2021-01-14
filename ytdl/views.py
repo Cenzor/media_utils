@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.views import View
 from .forms import YouTubeDLForm, FormatVideoForm
+from .tasks import download_video
 import youtube_dl
 
 
@@ -50,6 +51,28 @@ def get_title_and_thumbnail_url(url):
                 info_dict.get('thumbnails')[0].get('url'))
 
 
+# def download_order(request, video_url):
+#     """
+#     Скачивает видео
+#     """
+#     video_url = unquote(video_url)
+#     code = request.POST.get('format_video')
+#     email = request.POST.get('email')
+#     path = settings.MEDIA_ROOT
+#     ydl_opts = {
+#         'format': code,
+#         'outtmpl': f'{path}%(title)s.%(ext)s'
+#     }
+
+#     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+#         ydl.cache.remove()
+#         ydl.download([video_url])
+#     return render(request, 'ytdl/download_order.html',
+#                   context={
+#                       'email': email, 'section': 'ytdl'
+#                   })
+
+
 def download_order(request, video_url):
     """
     Скачивает видео
@@ -58,14 +81,7 @@ def download_order(request, video_url):
     code = request.POST.get('format_video')
     email = request.POST.get('email')
     path = settings.MEDIA_ROOT
-    ydl_opts = {
-        'format': code,
-        'outtmpl': f'{path}%(title)s.%(ext)s'
-    }
-
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.cache.remove()
-        ydl.download([video_url])
+    download_video.delay(code, video_url, path)
     return render(request, 'ytdl/download_order.html',
                   context={
                       'email': email, 'section': 'ytdl'
