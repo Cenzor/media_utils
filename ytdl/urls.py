@@ -9,4 +9,5 @@ urlpatterns = [
     path('', YouTubeDLView.as_view(), name='ytdl'),
     re_path(r'download-order/(?P<video_url>.+)/$',
             views.download_order, name='download_order'),
+    path('<str:filename>/', views.download_file, name='download_file')
 ]

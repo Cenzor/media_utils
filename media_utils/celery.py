@@ -1,7 +1,8 @@
 import os
+import celery
 from celery import Celery
 # from celery.schedules import crontab
-
+print(celery.__file__)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'media_utils.settings')
 app = Celery('media_utils')

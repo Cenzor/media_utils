@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        Ссылка для скачивания видео: 
+        <a href="http://194.147.115.10{% url "app_ytdl:download_file" filename %}">Скачать</a>
+        <p>Срок хранения файла: {{ expire_date }}</p>
+    </body>
+</html>

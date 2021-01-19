@@ -18,7 +18,3 @@ class FormatVideoForm(forms.Form):
         self.fields['format_video'] = forms.ChoiceField(choices=choices)
         self.fields['format_video'].label = ""
         self.fields['email'] = forms.EmailField()
-        
-
-    # format_video = forms.ChoiceField()
-    # email = forms.EmailField('E-mail', default='lomakov.k@yandex.ru')

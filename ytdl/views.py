@@ -5,6 +5,9 @@ from django.views import View
 from .forms import YouTubeDLForm, FormatVideoForm
 from .tasks import download_video
 import youtube_dl
+import os
+import mimetypes
+from django.http.response import HttpResponse, HttpResponseNotFound
 
 
 def get_url_info(url):
@@ -51,28 +54,6 @@ def get_title_and_thumbnail_url(url):
                 info_dict.get('thumbnails')[0].get('url'))
 
 
-# def download_order(request, video_url):
-#     """
-#     Скачивает видео
-#     """
-#     video_url = unquote(video_url)
-#     code = request.POST.get('format_video')
-#     email = request.POST.get('email')
-#     path = settings.MEDIA_ROOT
-#     ydl_opts = {
-#         'format': code,
-#         'outtmpl': f'{path}%(title)s.%(ext)s'
-#     }
-
-#     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-#         ydl.cache.remove()
-#         ydl.download([video_url])
-#     return render(request, 'ytdl/download_order.html',
-#                   context={
-#                       'email': email, 'section': 'ytdl'
-#                   })
-
-
 def download_order(request, video_url):
     """
     Скачивает видео
@@ -81,11 +62,28 @@ def download_order(request, video_url):
     code = request.POST.get('format_video')
     email = request.POST.get('email')
     path = settings.MEDIA_ROOT
-    download_video.delay(code, video_url, path)
+    download_video.delay(code, video_url, path, email)
     return render(request, 'ytdl/download_order.html',
                   context={
                       'email': email, 'section': 'ytdl'
                   })
+
+
+def download_file(request, filename):
+    """
+    Скачивает ранее загруженный файл
+    Если срок ожидания истёк, то возвращает 404
+    """
+    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            mime_type, _ = mimetypes.guess_type(file_path)
+            response = HttpResponse(fh.read(), content_type=mime_type)
+            response['Content-Disposition'] = 'filename=' + \
+                os.path.basename(file_path)
+            return response
+    else:
+        return HttpResponseNotFound('<h1>Время хранения файла истекло</h1>')
 
 
 class YouTubeDLView(View):

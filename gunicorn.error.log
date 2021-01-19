@@ -1,0 +1,11 @@
+[2021-01-19 14:00:59 +1000] [11836] [INFO] Starting gunicorn 20.0.4
+[2021-01-19 14:00:59 +1000] [11836] [INFO] Listening at: unix:/run/gunicorn.sock (11836)
+[2021-01-19 14:00:59 +1000] [11836] [INFO] Using worker: sync
+[2021-01-19 14:00:59 +1000] [11839] [INFO] Booting worker with pid: 11839
+[2021-01-19 14:00:59 +1000] [11840] [INFO] Booting worker with pid: 11840
+[2021-01-19 14:00:59 +1000] [11841] [INFO] Booting worker with pid: 11841
+[2021-01-19 16:16:35 +1000] [11839] [INFO] Worker exiting (pid: 11839)
+[2021-01-19 16:16:35 +1000] [11840] [INFO] Worker exiting (pid: 11840)
+[2021-01-19 16:16:35 +1000] [11841] [INFO] Worker exiting (pid: 11841)
+[2021-01-19 16:16:35 +1000] [11836] [INFO] Handling signal: term
+[2021-01-19 16:16:35 +1000] [11836] [INFO] Shutting down: Master
