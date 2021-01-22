@@ -1,23 +1,25 @@
-from media_utils.celery import app
-import youtube_dl
+from django.conf import settings
 from django.template import loader
 from django.core.mail import send_mail
-from media_utils import settings
-import os
 from datetime import datetime, timedelta
+import os
+import time
+from media_utils.celery import app
+import youtube_dl
 
 
 @app.task
-def download_video(code, video_url, path, email):
+def download_video(code, video_url, email):
+    path = settings.MEDIA_ROOT
+    title = str(time.time()).replace('.', '')
     ydl_opts = {
         'format': code,
-        'outtmpl': f'{path}{code}_%(title)s.%(ext)s'
+        'outtmpl': f'{path}{code}_{title}.%(ext)s'
     }
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.cache.remove()
         ydl.download([video_url])
         info_dict = ydl.extract_info(video_url, download=False)
-        title = info_dict.get('title')
         ext = ''
         for format_item in info_dict.get('formats'):
             if format_item.get('format_id', 'None') == code:

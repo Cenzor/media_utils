@@ -9,3 +9,69 @@
 [2021-01-19 16:16:35 +1000] [11841] [INFO] Worker exiting (pid: 11841)
 [2021-01-19 16:16:35 +1000] [11836] [INFO] Handling signal: term
 [2021-01-19 16:16:35 +1000] [11836] [INFO] Shutting down: Master
+[2021-01-21 12:16:55 +1000] [28337] [INFO] Starting gunicorn 20.0.4
+[2021-01-21 12:16:55 +1000] [28337] [INFO] Listening at: unix:/run/gunicorn.sock (28337)
+[2021-01-21 12:16:55 +1000] [28337] [INFO] Using worker: sync
+[2021-01-21 12:16:55 +1000] [28340] [INFO] Booting worker with pid: 28340
+[2021-01-21 12:16:55 +1000] [28341] [INFO] Booting worker with pid: 28341
+[2021-01-21 12:16:55 +1000] [28342] [INFO] Booting worker with pid: 28342
+[2021-01-21 12:57:14 +1000] [28337] [INFO] Handling signal: term
+[2021-01-21 12:57:14 +1000] [28341] [INFO] Worker exiting (pid: 28341)
+[2021-01-21 12:57:14 +1000] [28342] [INFO] Worker exiting (pid: 28342)
+[2021-01-21 12:57:14 +1000] [28340] [INFO] Worker exiting (pid: 28340)
+[2021-01-21 12:57:15 +1000] [28337] [INFO] Shutting down: Master
+[2021-01-21 12:57:16 +1000] [29698] [INFO] Starting gunicorn 20.0.4
+[2021-01-21 12:57:16 +1000] [29698] [INFO] Listening at: unix:/run/gunicorn.sock (29698)
+[2021-01-21 12:57:16 +1000] [29698] [INFO] Using worker: sync
+[2021-01-21 12:57:16 +1000] [29701] [INFO] Booting worker with pid: 29701
+[2021-01-21 12:57:16 +1000] [29702] [INFO] Booting worker with pid: 29702
+[2021-01-21 12:57:16 +1000] [29703] [INFO] Booting worker with pid: 29703
+[2021-01-21 13:16:14 +1000] [29698] [INFO] Handling signal: term
+[2021-01-21 13:16:14 +1000] [29703] [INFO] Worker exiting (pid: 29703)
+[2021-01-21 13:16:14 +1000] [29702] [INFO] Worker exiting (pid: 29702)
+[2021-01-21 13:16:14 +1000] [29701] [INFO] Worker exiting (pid: 29701)
+[2021-01-21 13:16:15 +1000] [29698] [INFO] Shutting down: Master
+[2021-01-21 13:27:52 +1000] [30549] [INFO] Starting gunicorn 20.0.4
+[2021-01-21 13:27:52 +1000] [30549] [INFO] Listening at: unix:/run/gunicorn.sock (30549)
+[2021-01-21 13:27:52 +1000] [30549] [INFO] Using worker: sync
+[2021-01-21 13:27:52 +1000] [30564] [INFO] Booting worker with pid: 30564
+[2021-01-21 13:27:52 +1000] [30565] [INFO] Booting worker with pid: 30565
+[2021-01-21 13:27:52 +1000] [30566] [INFO] Booting worker with pid: 30566
+[2021-01-21 13:28:02 +1000] [30549] [INFO] Handling signal: term
+[2021-01-21 13:28:02 +1000] [30564] [INFO] Worker exiting (pid: 30564)
+[2021-01-21 13:28:02 +1000] [30566] [INFO] Worker exiting (pid: 30566)
+[2021-01-21 13:28:02 +1000] [30565] [INFO] Worker exiting (pid: 30565)
+[2021-01-21 13:28:02 +1000] [30549] [INFO] Shutting down: Master
+[2021-01-21 13:28:43 +1000] [30652] [INFO] Starting gunicorn 20.0.4
+[2021-01-21 13:28:43 +1000] [30652] [INFO] Listening at: unix:/run/gunicorn.sock (30652)
+[2021-01-21 13:28:43 +1000] [30652] [INFO] Using worker: sync
+[2021-01-21 13:28:43 +1000] [30666] [INFO] Booting worker with pid: 30666
+[2021-01-21 13:28:43 +1000] [30667] [INFO] Booting worker with pid: 30667
+[2021-01-21 13:28:43 +1000] [30670] [INFO] Booting worker with pid: 30670
+[2021-01-21 14:53:17 +1000] [30670] [INFO] Worker exiting (pid: 30670)
+[2021-01-21 14:53:17 +1000] [30666] [INFO] Worker exiting (pid: 30666)
+[2021-01-21 14:53:17 +1000] [30652] [INFO] Handling signal: term
+[2021-01-21 14:53:17 +1000] [30667] [INFO] Worker exiting (pid: 30667)
+[2021-01-21 14:53:17 +1000] [30652] [INFO] Shutting down: Master
+[2021-01-21 16:33:44 +1000] [4250] [INFO] Starting gunicorn 20.0.4
+[2021-01-21 16:33:44 +1000] [4250] [INFO] Listening at: unix:/run/gunicorn.sock (4250)
+[2021-01-21 16:33:44 +1000] [4250] [INFO] Using worker: sync
+[2021-01-21 16:33:44 +1000] [4265] [INFO] Booting worker with pid: 4265
+[2021-01-21 16:33:44 +1000] [4266] [INFO] Booting worker with pid: 4266
+[2021-01-21 16:33:44 +1000] [4267] [INFO] Booting worker with pid: 4267
+[2021-01-21 16:36:53 +1000] [4250] [INFO] Handling signal: term
+[2021-01-21 16:36:53 +1000] [4266] [INFO] Worker exiting (pid: 4266)
+[2021-01-21 16:36:53 +1000] [4265] [INFO] Worker exiting (pid: 4265)
+[2021-01-21 16:36:53 +1000] [4267] [INFO] Worker exiting (pid: 4267)
+[2021-01-21 16:36:53 +1000] [4250] [INFO] Shutting down: Master
+[2021-01-22 13:47:28 +1000] [9971] [INFO] Starting gunicorn 20.0.4
+[2021-01-22 13:47:28 +1000] [9971] [INFO] Listening at: unix:/run/gunicorn.sock (9971)
+[2021-01-22 13:47:28 +1000] [9971] [INFO] Using worker: sync
+[2021-01-22 13:47:28 +1000] [9987] [INFO] Booting worker with pid: 9987
+[2021-01-22 13:47:28 +1000] [9988] [INFO] Booting worker with pid: 9988
+[2021-01-22 13:47:28 +1000] [9991] [INFO] Booting worker with pid: 9991
+[2021-01-22 13:50:23 +1000] [9971] [INFO] Handling signal: term
+[2021-01-22 13:50:23 +1000] [9991] [INFO] Worker exiting (pid: 9991)
+[2021-01-22 13:50:23 +1000] [9988] [INFO] Worker exiting (pid: 9988)
+[2021-01-22 13:50:23 +1000] [9987] [INFO] Worker exiting (pid: 9987)
+[2021-01-22 13:50:23 +1000] [9971] [INFO] Shutting down: Master

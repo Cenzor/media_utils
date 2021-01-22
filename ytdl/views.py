@@ -1,13 +1,13 @@
-from urllib.parse import quote, unquote
 from django.conf import settings
 from django.shortcuts import render
 from django.views import View
+from django.http.response import HttpResponse, HttpResponseNotFound
+import mimetypes
+import os
+from urllib.parse import quote, unquote
 from .forms import YouTubeDLForm, FormatVideoForm
 from .tasks import download_video
 import youtube_dl
-import os
-import mimetypes
-from django.http.response import HttpResponse, HttpResponseNotFound
 
 
 def get_url_info(url):
@@ -61,8 +61,7 @@ def download_order(request, video_url):
     video_url = unquote(video_url)
     code = request.POST.get('format_video')
     email = request.POST.get('email')
-    path = settings.MEDIA_ROOT
-    download_video.delay(code, video_url, path, email)
+    download_video.delay(code, video_url, email)
     return render(request, 'ytdl/download_order.html',
                   context={
                       'email': email, 'section': 'ytdl'
