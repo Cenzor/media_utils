@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+from config import EMAIL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     'imgtopdf.apps.ImgtopdfConfig',
     'ytdl.apps.YtdlConfig',
@@ -147,9 +149,6 @@ CELERY_RESULT_BACKEND = 'django-db'
 # email
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = EMAIL.get('address')
+EMAIL_HOST_PASSWORD = EMAIL.get('password')
 EMAIL_PORT = 587
-
-
-# https://www.youtube.com/watch?v=cwAors_xDA4
