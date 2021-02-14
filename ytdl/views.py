@@ -8,16 +8,17 @@ from urllib.parse import quote, unquote
 from .forms import YouTubeDLForm, FormatVideoForm
 from .tasks import download_video
 import youtube_dl
+from typing import List, Tuple, Union
 
 
-def get_url_info(url):
+def get_url_info(url: str) -> List[Tuple[str, str]]:
     """
     Запрашивает информацию о видео.
     Возвращает сформированный список с форматами видео
     """
     ydl_opts = {
     }
-    video_format_choices = []
+    video_format_choices: List[Tuple[str, str]] = []
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.cache.remove()
         info_dict = ydl.extract_info(url, download=False)
@@ -39,7 +40,7 @@ def get_url_info(url):
     return video_format_choices
 
 
-def get_title_and_thumbnail_url(url):
+def get_title_and_thumbnail_url(url: str) -> Tuple[str, str]:
     """
     Запрашивает информацию о видео.
     Возвращает название видео и ссылку на миниатюру видеофайла
@@ -54,7 +55,7 @@ def get_title_and_thumbnail_url(url):
                 info_dict.get('thumbnails')[0].get('url'))
 
 
-def download_order(request, video_url):
+def download_order(request, video_url: str) -> render:
     """
     Скачивает видео
     """
@@ -68,12 +69,12 @@ def download_order(request, video_url):
                   })
 
 
-def download_file(request, filename):
+def download_file(request, filename: str) -> Union[HttpResponse, HttpResponseNotFound]:
     """
     Скачивает ранее загруженный файл
     Если срок ожидания истёк, то возвращает 404
     """
-    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+    file_path: str = os.path.join(settings.MEDIA_ROOT, filename)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             mime_type, _ = mimetypes.guess_type(file_path)
@@ -86,7 +87,13 @@ def download_file(request, filename):
 
 
 class YouTubeDLView(View):
-    def get(self, request):
+    """
+    Обрабатывает пользовательские GET/POST запросы
+    """
+    def get(self, request) -> render:
+        """
+        Метод отображает главную страницу для скачивания видео
+        """
         youtube_form = YouTubeDLForm()
         return render(request, 'ytdl/main.html',
                       {
@@ -94,7 +101,10 @@ class YouTubeDLView(View):
                           'section': 'ytdl'
                       })
 
-    def post(self, request):
+    def post(self, request) -> render:
+        """
+        Метод принимает url видео, запрашивает метаинформацию.
+        """
         youtube_form = YouTubeDLForm(request.POST)
         if youtube_form.is_valid():
             url = youtube_form.cleaned_data['url']

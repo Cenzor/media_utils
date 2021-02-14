@@ -3,8 +3,6 @@ from django.forms import ModelForm
 from .models import YouTubeDL
 
 
-# class YouTubeDLForm(forms.Form):
-#     url = forms.URLField("")
 class YouTubeDLForm(ModelForm):
     class Meta:
         model = YouTubeDL

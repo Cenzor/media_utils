@@ -5,11 +5,16 @@ from .forms import UploadImageForm
 import os
 import mimetypes
 from PIL import Image
+from typing import Union
 
 
-def upload_file(request):
-    sent = False
-    file_name_pdf = ''
+def upload_file(request) -> render:
+    """
+    В случае POST-запроса функция загружает файл от пользователя на сервер.
+    Иначе отображает страницу для загрузки файла.
+    """
+    sent: bool = False
+    file_name_pdf: str = ''
     if request.method == 'POST':
         upload_form = UploadImageForm(request.POST, request.FILES)
         if upload_form.is_valid():
@@ -25,7 +30,11 @@ def upload_file(request):
                    'section': 'imgtopdf', 'file_name_pdf': file_name_pdf})
 
 
-def handle_uploaded_file(f, fn):
+def handle_uploaded_file(f, fn: str) -> None:
+    """
+    Функция конвертирует загруженное изображение в pdf-файл
+    и сохраняет на сервере.
+    """
     with open(settings.MEDIA_ROOT+fn, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
@@ -37,8 +46,8 @@ def handle_uploaded_file(f, fn):
     os.remove(settings.MEDIA_ROOT+fn)
 
 
-def download_file(request, filename):
-    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+def download_file(request, filename: str) -> Union[HttpResponse, HttpResponseRedirect]:
+    file_path: str = os.path.join(settings.MEDIA_ROOT, filename)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             mime_type, _ = mimetypes.guess_type(file_path)

@@ -9,9 +9,14 @@ import youtube_dl
 
 
 @app.task
-def download_video(code, video_url, email):
-    path = settings.MEDIA_ROOT
-    title = str(time.time()).replace('.', '')
+def download_video(code: str, video_url: str, email: str) -> None:
+    """
+    Задача Celery. Загружает видео на сервер,
+    отправляет письмо с ссылкой для скачивания.
+    Создаёт таск по отсроченному удалению файла с сервера.
+    """
+    path: str = settings.MEDIA_ROOT
+    title: str = str(time.time()).replace('.', '')
     ydl_opts = {
         'format': code,
         'outtmpl': f'{path}{code}_{title}.%(ext)s'
@@ -49,8 +54,11 @@ def download_video(code, video_url, email):
 
 
 @app.task
-def remove_expire_file(filename):
-    file = settings.MEDIA_ROOT + filename
+def remove_expire_file(filename: str) -> None:
+    """
+    Задача Celery. Удаляет ранее загруженный файл с сервера.
+    """
+    file: str = settings.MEDIA_ROOT + filename
     try:
         os.remove(file)
     except Exception:
